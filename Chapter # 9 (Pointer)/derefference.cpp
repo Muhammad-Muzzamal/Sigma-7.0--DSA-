@@ -25,5 +25,13 @@ Dereferance Operator :
 
         we can modify the value using dereferrance operator 
 
+        Example :
+
+        int a = 10;
+        int *ptr = &a;
+        cout << a << endl;  a = 10
+        *ptr = 20;
+        cout << a << endl;  a = 20 (update)
+
 
 */
