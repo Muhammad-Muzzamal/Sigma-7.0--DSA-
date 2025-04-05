@@ -23,5 +23,7 @@ Dereferance Operator :
         cout << ptr << endl; ===> Print address of a 
         cout << *ptr << endl; ===> print the value at the stored address 
 
+        we can modify the value using dereferrance operator 
+
 
 */
