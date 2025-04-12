@@ -14,11 +14,12 @@ int maxSubarraySum(int *arr, int size) {
     return maxSum;
 
 
-    
+
 
 }
 int main () {
-    int array[] = {2, -3, 6, -5, 4, 2};
+    // int array[] = {2, -3, 6, -5, 4, 2};
+    int array[] = {1, 2, 3, 4, 5};
     int size = sizeof(array) / sizeof(int);
     cout << maxSubarraySum(array, size) << endl;
 
