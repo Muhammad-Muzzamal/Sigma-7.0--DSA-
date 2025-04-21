@@ -36,7 +36,7 @@ int maxProfit(vector<int> &prices) {
             profit = currProfit;
         }
     }
-    return Profit;
+    return profit;
 }
 int main () {
     int price[] = {7, 1, 5, 3, 6, 4};
