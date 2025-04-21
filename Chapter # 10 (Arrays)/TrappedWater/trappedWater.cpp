@@ -19,9 +19,12 @@ int trappedWater(int *height, int size) {
     int waterTrapped = 0;
     for (int i = 0; i < size; i++)
     {
-        
+        int currWater = min(leftmax[i], rightMax[i]) - height[i];
+        if (currWater > 0) {
+            waterTrapped += currWater;
+        }
     }
-    
+    cout << waterTrapped;
     
     
 }
