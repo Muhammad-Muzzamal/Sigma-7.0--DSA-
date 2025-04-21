@@ -2,20 +2,20 @@
 #include <climits>
 using namespace std;
 int trappedWater(int *height, int size) {
-    int leftmax[20000];
+    int leftmax[20000], rightMax[20000];
     leftmax[0] = height[0];
+    rightMax[size-1] = height[size-1];
+    //left max 
     for (int i = 1; i < size; i++)
     {
         leftmax[i] = max(leftmax[i-1], height[i-1]);
     }
-    cout << endl;
-
-    int rightMax[20000];
-    rightMax[size-1] = height[size-1];
+    //right max 
     for (int i = size-2; i >= 0; i--)
     {
         rightMax[i] = max(rightMax[i+1], height[i+1]);
     }
+    //trapped water
     int waterTrapped = 0;
     for (int i = 0; i < size; i++)
     {
@@ -25,7 +25,7 @@ int trappedWater(int *height, int size) {
         }
     }
     cout << waterTrapped;
-    
+    return waterTrapped;
     
 }
 int main () {
