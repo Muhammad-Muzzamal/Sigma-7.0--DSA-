@@ -55,12 +55,29 @@ int trap(vector<int>& height) {
     return trappedWater;
 }
 
-
+// solved by leetcode
+int trap2(vector<int>& a) {
+    int n=a.size();
+    int l=0,h=n-1,minl=0,minr=0,res=0;
+    while(l<=h){
+        if(a[l]<=a[h]){
+            if(a[l]>=minl) minl=a[l];
+            else res+=minl-a[l];
+            l++;
+        }
+        else {
+            if(minr<=a[h]) minr=a[h];
+            else res+=minr-a[h];
+            h--;
+        }
+    }
+    return res;
+}
 int main () {
     // int height[] = {4, 2, 0, 6, 3, 2, 5};
     // int size = sizeof(height) / sizeof(int);
     // trappedWater(height, size);
     vector<int> height = {4, 2, 0, 6, 3, 2, 5};
-    cout << trap(height);
+    cout << trap2(height);
     return 0;
 }
