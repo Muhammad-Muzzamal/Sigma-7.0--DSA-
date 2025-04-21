@@ -1,5 +1,6 @@
 #include <iostream>
 #include <climits>
+#include <vector>
 using namespace std;
 int profit(int *price, int n) { //time complexity = O(n+n) -> O(2n) -> O(n) (ignore contants)
     int bestBuy[100000];//10^5 constrains 
@@ -18,6 +19,24 @@ int profit(int *price, int n) { //time complexity = O(n+n) -> O(2n) -> O(n) (ign
     }    
     cout <<"MAx Profit : "<< maxProfit << endl;
      
+}
+// By using vectors
+int maxProfit(vector<int> &prices) {
+    int buyPrice = prices[0];
+    int profit = 0;
+
+    for (int i = 1; i < prices.size(); i++) {
+        if (buyPrice > prices[i]) {
+            buyPrice = prices[i];
+        }
+
+        int currProfit = prices[i] - buyPrice;
+
+        if (profit < currProfit) {
+            profit = currProfit;
+        }
+    }
+    return Profit;
 }
 int main () {
     int price[] = {7, 1, 5, 3, 6, 4};
