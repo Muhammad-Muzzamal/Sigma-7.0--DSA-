@@ -21,6 +21,9 @@ void selectionSort(int *arr, int n) {
 int main () {
     int arr[] = {5, 4, 1, 3, 2};
     int n = sizeof(arr) / sizeof(int);
+    cout << "Before Selestion Sorting :\n";
     display(arr, n);
+    cout << "After Selestion Sorting :\n";
+    selectionSort(arr, n);
     return 0;
 }
