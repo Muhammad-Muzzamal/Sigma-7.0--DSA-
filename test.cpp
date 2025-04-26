@@ -7,6 +7,16 @@ void display(int *arr, int n) {
     }
     cout << endl;
 }
+void bubbleSort(int *arr, int n) {
+    for(int i=0; i<n-1; i++) {
+        for(int j=i+1; j<n; j++) {
+            if(arr[i] > arr[j]) {
+                swap(arr[i], arr[j]);
+            }
+        }
+    }
+    display(arr, n);
+}
 //selection sorting 
 void selectionSort(int *arr, int n) {
     for(int i=0; i<n-1; i++) {
@@ -36,7 +46,7 @@ void insertionSort(int *arr, int n) {
 int main () {
     int arr[] = {64, 25, 12, 22, 11};
     int n = sizeof(arr) / sizeof(int);
-    cout << "Insertion Sorting : ";
-    insertionSort(arr, n);
+    cout << "Bubble Sorting : ";
+    bubbleSort(arr, n);
     return 0;
 }
