@@ -17,9 +17,21 @@ void bubbleSort(int *arr, int n) {
     }
     display(arr, n); 
 }
+void selectionSort(int arr[], int n) {
+    for(int i=0; i<n-1; i++) {
+        int minIdx = i;
+        for(int j=i+1; j<n; j++) {
+            if(arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        swap(arr[i], arr[minIdx]);
+    }
+    display(arr, n);
+}
 int main () {
     int arr[] = {3,6,2,1,8,7,4,5,3,1};
     int n = sizeof(arr) / sizeof(int);
-    bubbleSort(arr, n);
+    selectionSort(arr, n);
     return 0;
 }
