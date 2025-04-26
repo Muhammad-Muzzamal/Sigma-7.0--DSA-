@@ -1,5 +1,6 @@
 #include <iostream>
 #include <climits>
+#include <algorithm>
 using namespace std;
 // display function 
 void display(int *arr, int n) {
@@ -53,7 +54,6 @@ void countingSort(int arr[], int n) {
         minVal = min(minVal, arr[i]);
         maxVal = max(maxVal, arr[i]);
     }
-
     for(int i=0; i<n; i++) {
         freq[arr[i]]++;
     }
@@ -63,13 +63,23 @@ void countingSort(int arr[], int n) {
            arr[j++] = i;
            freq[i]--;
         }
-        
     }
+    display(arr, n);
+}
+//inbuild sort 
+void ascSort(int arr[], int n) {
+    sort(arr, arr+n);
+    display(arr, n);
+}
+void descSort(int arr[], int n) {
+    sort(arr, arr+n, greater<int>());
     display(arr, n);
 }
 int main () {
     int arr[] = {3,6,2,1,8,7,4,5,3,1};
     int n = sizeof(arr) / sizeof(int);
+    descSort(arr, n);
+    ascSort(arr, n);
     
     return 0;
 }

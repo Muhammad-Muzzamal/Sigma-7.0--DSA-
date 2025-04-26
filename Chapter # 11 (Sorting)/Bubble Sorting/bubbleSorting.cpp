@@ -16,7 +16,6 @@ int bubbleSorting(int *arr, int n) {
     }
     display(arr, n);
 }
-
 int main () {
     int arr[] = {3, 5, 1, 4, 2};
     int n = sizeof(arr)/ sizeof(int);
