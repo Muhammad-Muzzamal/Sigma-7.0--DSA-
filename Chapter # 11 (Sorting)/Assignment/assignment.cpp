@@ -68,6 +68,13 @@ void countingSort(int arr[], int n) {
 int main () {
     int arr[] = {3,6,2,1,8,7,4,5,3,1};
     int n = sizeof(arr) / sizeof(int);
+    cout << "Bubble Sorting : ";
+    bubbleSort(arr, n);
+    cout << "Insertion Sorting : ";
+    insertionSort(arr, n);
+    cout << "Selection Sorting : ";
+    selectionSort(arr, n);
+    cout << "Counting Sorting : ";
     countingSort(arr, n);
     return 0;
 }
