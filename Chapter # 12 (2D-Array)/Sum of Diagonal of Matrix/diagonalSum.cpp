@@ -3,18 +3,10 @@ using namespace std;
 int diagonalSum(int mat[][3], int n)
 {
     int sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            if (i == j)
-            {
-                sum += mat[i][j];
-            }
-            else if (j == n - i - 1)
-            {
-                sum += mat[i][j];
-            }
+    for (int i = 0; i < n; i++){
+        sum += mat[i][i];
+        if(i != n-i-1) {
+            sum += mat[i][n-1-i];
         }
     }
     cout << "Sum : " << sum << endl;
