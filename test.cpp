@@ -109,14 +109,71 @@ void spiralMatrix(int mat[][4], int row, int col) {
         ecol--;
     }
 }
-int main () {
-    int n = 4;
-    int m = 4;
-    int matrix[4][4] = {{1, 2, 3, 4},
-                        {5, 6, 7, 8},
-                        {9, 10, 11, 12},
-                        {13, 14, 15, 16}};
-    spiralMatrix(matrix, n, m);
+// Brute force Approach to calculate the diagonal sum
+int diagonalSumMatrixBrute(int mat[][3], int n) {
+    int sum = 0;
+    for(int i=0; i<n; i++) { // control row 
+        for(int j=0; j<n; j++) { // control col
+            if(i == j) {
+                sum += mat[i][j];
+            }
+            else if(j == n-1-i) {
+                sum += mat[i][j];
+            }
+        }
+    }
+    cout << "Sum of Diagonals is : " << sum << endl;
+    return sum;
+}
+int diagonalSumOptimized(int mat[][3], int n) {
+    int sum = 0;
+    for(int i=0; i<n; i++) {
+        sum += mat[i][i];
+        if(i != n-1-1) {
+            sum += mat[i][n-1-i];
+        }
+    }
+    cout << "Diagonal Sum is : " << sum << endl;
+}
+int searchBrute(int mat[][3], int row, int col,int key) { // O(N^2) time complexity
+    for(int i=0; i<row; i++) {
+        for(int j=0; j<col; j++) {
+            if(mat[i][j] == key) {
+                cout << "Key Found at Index : (" << i << ", " << j << ")\n";
+                return 1;
+            }
+        }
+    }
+    cout << "Key is not found.\n";
+    return -1; // if key not found 
+}
+bool staircaseSearch(int (*mat)[3], int n, int m, int key) {
+    int row, col;
+    row = 0;
+    col = m-1;
+    while (row < n && col <= m) {
+        int curr = mat[row][col];
+        if(key == curr){
+            cout << "Key found\n";
+            return true;
+        }
+        else if(key < curr) {
+            col--;
+        }
+        else if(key > curr){
+            row++;
+        }
+    }
+    cout << "key not found\n";
+    return false;
+    
+}
+int main () { 
+    cout << "Program Started.....\n";
+    int matrix[3][3] = {{1, 2, 3},
+                        {5, 6, 7},
+                        {9, 10, 11}};
+    cout << staircaseSearch(matrix, 3, 3, 100) << endl;
     
     return 0;
 }
