@@ -7,10 +7,10 @@ int main() {
     cout << "Enter th col : ";
     cin >> col;
     
+    // data store on row wise
+    int **matrix = new int*[row]; // rows 
 
-    int **matrix = new int*[row];
-
-    for(int i=0; i<row; i++) {
+    for(int i=0; i<row; i++) { // column in each row
         matrix[i] = new int[col];
     }
 
