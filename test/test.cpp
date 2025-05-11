@@ -1,6 +1,7 @@
 #include <iostream>
 #include <climits>
 #include <algorithm>
+#include <cstring>
 using namespace std;
 // display function 
 void display(int *arr, int n) {
@@ -168,12 +169,70 @@ bool staircaseSearch(int (*mat)[3], int n, int m, int key) {
     return false;
     
 }
+// recurssion 
+double power(double x, unsigned int n) {
+    if(n == 0) {
+        return 1.0;
+    }
+    return x * power(x, n-1);
+
+}
+double power2(double x, unsigned int n) {
+    int result = 1;
+    for(int i = n; i >= 1; i--) {
+        result *= x;
+    }
+    return result;
+
+}
+// tail recursion 
+void tail(int n) {
+    if(n > 0) {
+        tail(n-1);
+        cout << n << " ";
+    }
+}
+void iterativeEquivalentOfTail(int i) {
+    for(i; i >= 1; i--) {
+        cout << i << " ";
+    }
+}
+// no tail recursion function
+void nonTail(int n) {
+    if(n > 0) {
+        nonTail(n-1);
+        cout << n << " ";
+        nonTail(n-1);
+    }
+}
+// reverse a char
+void reverse() {
+    char ch;
+    cin.get(ch);
+    if( ch != '\n') {
+        reverse();
+        cout.put(ch);
+    }
+}
+void simpleIterativeReverse() {
+    char stack[80];
+    register int top = 0;
+    cin.getline(stack, 80);
+    for(top = strlen(stack)-1; top >= 0; cout.put(stack[top--]));
+}
+void iterativeReverse() {
+    char stack[80];
+    register int top = 0;
+    cin.get(stack[top]);
+    while(stack[top] != '\n') {
+        cin.get(stack[++top]);
+    }
+    for(top -= 2; top >= 0; cout.put(stack[top--]));
+}
+// fibonacci number 
+
+
 int main () { 
-    cout << "Program Started.....\n";
-    int matrix[3][3] = {{1, 2, 3},
-                        {5, 6, 7},
-                        {9, 10, 11}};
-    cout << staircaseSearch(matrix, 3, 3, 100) << endl;
-    
+    iterativeReverse();    
     return 0;
 }
