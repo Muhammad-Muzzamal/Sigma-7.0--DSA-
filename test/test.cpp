@@ -229,10 +229,19 @@ void iterativeReverse() {
     }
     for(top -= 2; top >= 0; cout.put(stack[top--]));
 }
-// fibonacci number 
+int getithBit(int num, int i){ 
+    int bitMask = (1 << i);
+
+    if(!(num & bitMask)) {
+        return 0;
+    }
+    else{
+        return 1;
+    }
+} 
 
 
 int main () { 
-    iterativeReverse();    
+    cout << getithBit(6, 2) << endl;   
     return 0;
 }

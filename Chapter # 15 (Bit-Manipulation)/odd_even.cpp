@@ -1,12 +1,15 @@
 #include <iostream>
 using namespace std;
-int main() {
-    int n=7;
-    if((n&1) == 0) {
+void oddEven(int n) {
+    if(!(n & 1)) {   // ((n & 1) == 0)
         cout << "Even\n";
     }
-    else{
+    else {
         cout << "Odd\n";
     }
+}
+int main() {
+    oddEven(7);
+    oddEven(8);
     return 0;
 }

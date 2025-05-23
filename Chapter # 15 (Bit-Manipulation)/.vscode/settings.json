@@ -28,5 +28,9 @@
             "database": "code",
             "username": "root"
         }
-    ]
+    ],
+    "files.associations": {
+        "*.dbclient-js": "javascript",
+        "iostream": "cpp"
+    }
 }
