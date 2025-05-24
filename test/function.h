@@ -1,9 +1,7 @@
-#include <iostream>
-#include <climits>
-#include <algorithm>
-#include <cstring>
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+#include<iostream>
 using namespace std;
-// display function 
 void display(int *arr, int n) {
     for(int i=0; i<n; i++) {
         cout << arr[i] << ", ";
@@ -239,9 +237,13 @@ int getithBit(int num, int i){
         return 1;
     }
 } 
-
-
-int main () { 
-    cout << getithBit(6, 2) << endl;   
-    return 0;
+int setithBit(int num, int i) {
+    int bitMask = (1 << i);
+    return (num | bitMask);
 }
+int clearithBit(int num, int i) {
+    int bitMask = ~(1<<i);
+    return (num & bitMask);
+}
+
+#endif
