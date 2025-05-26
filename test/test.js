@@ -38,12 +38,14 @@ class Student {
     greet() {
         console.log(`Hi, I am ${this.name} main ap ko salam paish karta hu `);
     }
+    info=()=>{
+        console.log(this.getname());
+        console.log(this.getid());
+    }
 };
 s1 = new Student(11, 'Ahmad');
-console.log(s1.id);
-s1.setid(12);
-s1.setname("kamal")
-console.log(s1.getname());
-s1.greet();
+
+console.log(s1);
+
 
 

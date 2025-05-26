@@ -7,12 +7,22 @@ class Student{
     int rollno;
     string phone;
 public:
-    Student() {} // default constructor
+    Student() {
+        cout << "Default Constructor Called" << endl;
+    } // default constructor
     Student(int rollno, string name, string phone) { // parameterized constructor
+        cout << "Parameterized Constructor Called" << endl;
         this->rollno = rollno;
         this->name = name;
         this->phone = phone;
     } 
+    // Copy Constructor
+    Student(Student &obj) {
+        cout << "Copy Constructor Called" << endl;
+        name = obj.name;
+        rollno = obj.rollno;
+        phone = obj.phone;
+    }
     // getters
     string getname() { 
         return name;
@@ -35,9 +45,14 @@ public:
     }
     // display information of student
     void info() {
+        cout << "INFO Started..." << endl;
         cout << "Roll No. : " << rollno << endl;
         cout << "Name : " << name << endl;
         cout << "Phone : " << phone << endl;
+        cout << "INFO Ended..." << endl;
+    }
+    ~Student() {
+        cout << "Destructor Called..." << endl;
     }
 };
 

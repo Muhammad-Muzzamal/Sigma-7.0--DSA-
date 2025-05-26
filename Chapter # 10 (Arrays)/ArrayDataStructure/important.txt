@@ -1,0 +1,30 @@
+IMPORTANT CONCEPTS ABOUT ARRAY DATA STRUCTURE
+
+int array[50] = {1, 2, 3, 4, 5}; // we create an array of size (definition and initialization)
+int arr[]; // invalid definaition
+int arr[20]; // valid definoition 
+int arr[] = {1, 2, 3, 4, 5}; // compiler automatically detect its size according to space allocated by data 
+
+SIZE OF ARRAY
+
+// we can print the size of an array by using bellow formula 
+int size = sizeof(array) / sizeof(int);
+cout << size << endl; // 50
+
+TRAVERSAL OUTPUT 
+
+void traverse(int *arr, int size) {
+    // we cannot calculate size here bcz we just pass the address of our value att index 0
+    for(int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+}
+
+TRAVERSAL INPUT
+
+void traverseInput(int *arr, int size) {
+    // we cannot calculate size here bcz we just pass the address of our value att index 0
+    for(int i = 0; i < size; i++) {
+        cin >> *(arr + i);
+    }
+}
