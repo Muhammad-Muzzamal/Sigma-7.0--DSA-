@@ -1,0 +1,7 @@
+linked list is linear data structure like array and vector but there is ahuge difference in array and linkedlist 
+
+in arrays alements are arranged in contigius manner like a lines of memory blockes which are before and forth to each other
+
+fist node is called head 
+last node is called tail  (in SLL there is no tal node )
+the next ptr of the last node point to NULL
