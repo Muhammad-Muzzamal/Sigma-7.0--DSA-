@@ -14,118 +14,117 @@ public:
         left = right = NULL;
     }
 };
-static int idx = -1;
-Node *buildTree(vector<int> nodes)
-{
-    idx++;
-    if (nodes[idx] == -1)
-    {
-        return NULL;
+
+class Tree {
+private:
+    Node* root;
+    int idx;
+    Node* buildTreeHelper(vector<int>& nodes) {
+        idx++;
+        if(nodes[idx] == -1) return NULL;
+        Node* currNode = new Node(nodes.at(idx));
+        currNode->left = buildTreeHelper(nodes);
+        currNode->right = buildTreeHelper(nodes);
+        return currNode;
     }
-    Node *currNode = new Node(nodes[idx]);
-    currNode->left = buildTree(nodes);
-    currNode->right = buildTree(nodes);
-    return currNode;
-}
-void preorder(Node *root)
-{
-    if (root == NULL)
-    {
-        return;
+public:
+    Node* getRoot() {
+        return root;
     }
-    cout << root->data << " ";
-    preorder(root->left);
-    preorder(root->right);
-}
-void inorder(Node *root)
-{
-    if (root == NULL)
-    {
-        return;
+    Tree() {
+        root = NULL;
+        idx = -1;
     }
-    inorder(root->left);
-    cout << root->data << " ";
-    inorder(root->right);
-}
-void postorder(Node *root)
-{
-    if (root == NULL)
-    {
-        return;
+    void buildTree(vector<int> nodes){
+        idx = -1;
+        root = buildTreeHelper(nodes);
     }
-    postorder(root->left);
-    postorder(root->right);
-    cout << root->data << " ";
-}
-void levelorder(Node *root)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-    queue<Node *> q;
-    q.push(root);
-    q.push(NULL);
-    while (!q.empty())
-    {
-        Node *curr = q.front();
-        q.pop();
-        if (curr == NULL)
-        {
-            cout << endl;
-            if (q.empty())
-            {
-                break;
-            }
-            q.push(NULL);
+    void preorder(Node* node){ 
+        if(root = NULL) {
+            return;
         }
-        else
-        {
-            cout << curr->data << " ";
-            if (curr->left != NULL)
-            {
-                q.push(curr->left);
-            }
-            if (curr->right != NULL)
-            {
-                q.push(curr->right);
-            }
-        }
+        cout << node->data << " ";
+        preorder(node->left);
+        preorder(node->right);
     }
-}
-int height(Node* root) {
-    if (root == NULL) {
-        return 0;
+    void inorder(Node* node){ 
+        if(root = NULL) {
+            return;
+        }
+        inorder(node->left);
+        cout << node->data << " ";
+        inorder(node->right);
+    }
+    void postorder(Node* node){ 
+        if(root = NULL) {
+            return;
+        }
+        postorder(node->left);
+        postorder(node->right);
+        cout << node->data << " ";
     }
 
-    int leftHeight = height(root->left);
-    int rightHeight = height(root->right);
-    int currHeight = max(leftHeight, rightHeight) + 1;
-    return currHeight;
-}
-int countNode(Node* root) {
-    if(root == NULL) {
-        return 0;
+    void levelOrder(Node* node) {
+        if(root == NULL) {
+            return;
+        }
+        queue<Node*> q;
+        q.push(node);
+        q.push(NULL);
+        while(!q.empty()) {
+            Node* curr = q.front();
+            q.pop();
+            if(curr == NULL) {
+                cout << endl;
+                if(q.empty()) {
+                    return;
+                }
+                q.push(NULL);
+            } else {
+                cout << curr->data << " ";
+                if(curr->left != NULL) {
+                    q.push(curr->left);
+                }
+                if(curr->right != NULL) {
+                    q.push(curr->right);
+                }
+            }
+        }
     }
-    int left = countNode(root->left);
-    int right = countNode(root->right);
-    return left + right + 1;
-}
-int sum(Node* root) {
-    if(root == NULL) {
-        return 0;
-    }
-    int leftSum = sum(root->left);
-    int rightSum = sum(root->right);
-    return leftSum + rightSum + root->data;
 
-}
+    int height(Node* node) {
+        if(node == NULL) {
+            return 0;
+        }
+        int leftHeight = height(node->left);
+        int rightHeight = height(node->right);
+        return max(leftHeight, rightHeight) + 1;
+    }
+    int countNode(Node* node) {
+        if(node == NULL) {
+            return 0;
+        }
+        int leftCount = countNode(node->left);
+        int rightCount = countNode(node->right);
+        return leftCount + rightCount + 1;
+    }
+    int sum(Node* node) {
+        if(node == NULL) {
+            return 0;
+        }
+        int leftSum = sum(node->left);
+        int rightSum = sum(node->right);
+        return leftSum + rightSum + node->data;
+    }
+};
+
 int main()
 {
     vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
-    Node *root = buildTree(nodes);
-    levelorder(root);
-    cout << "Sum : " << sum(root) << endl;
-
+    Tree t;
+    t.buildTree(nodes);
+    Node* root = t.getRoot();
+    t.levelOrder(root);
+    cout << t.sum(root) << endl;
     return 0;
 }
