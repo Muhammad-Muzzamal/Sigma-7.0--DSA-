@@ -5,3 +5,17 @@ in arrays alements are arranged in contigius manner like a lines of memory block
 fist node is called head 
 last node is called tail  (in SLL there is no tal node )
 the next ptr of the last node point to NULL
+
+
+Inserton Logic
+
+ 3.1.1	Insertion
+    Adding a node at the beginning of a linked list is performed in four steps.
+    1. An empty node is created. It is empty in the sense that the program performing in
+    sertion does not assign any values to the data members of the node (Figure 3.4a).
+    2. The node’s info member is initialized to a particular integer (Figure 3.4b).
+    3. Because the node is being included at the front of the list, the next member becomes 
+    a pointer to the first node on the list; that is, the current value of head (Figure 3.4c).
+    4. The new node precedes all the nodes on the list, but this fact has to be reflected in 
+    the value of head; otherwise, the new node is not accessible. Therefore, head is up
+    dated to become the pointer to the new node (Figure 3.4d).
