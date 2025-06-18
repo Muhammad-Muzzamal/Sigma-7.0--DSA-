@@ -99,29 +99,82 @@ public:
         if (node == NULL) return 0;
         return sum(node->left) + sum(node->right) + node->data;
     }
+    bool BSTSearch(Node* node, int key) {
+        if(node == NULL) {
+            return 0;
+        }
+        if (node->data == key) {
+            return 1;
+        } else {
+            if(node->data < key) {
+                BSTSearch(node->right, key);
+            } else {
+                BSTSearch(node->right, key);
+            }
+        }
+    }
+    void insertBST(int val) {
+        root = insertBST(root, val);
+    }
+    Node* insertBST(Node* node, int val) {
+        Node* newNode = new Node(val);
+        if (node == NULL) {
+            return node = newNode;
+        } else {
+            if(val > node->data) {
+                node->right = insertBST(node->right, val);
+            } else {
+                node->left =insertBST(node->left, val);
+            }
+        }
+        return node;
+    }
+    Node* successor(Node* root) {
+        root = root->right;
+        while(root != NULL && root->left != NULL) {
+            root = root->left;
+        }
+        return root;
+    }
+    Node* delNode(Node* root, int target) {
+        // base case 
+        if(root == NULL) {
+            return root;
+        }
+        if(root->data > target) {
+            root->left = delNode(root->left, target);
+        }
+        else if(root->data < target) {
+            root->right = delNode(root->right, target);
+        }
+        else {
+            if(root->left == NULL) {
+                Node* temp = root->right;
+                delete root;
+                return temp;
+            }
+            if(root->right == NULL) {
+                Node* temp = root->left;
+                delete root;
+                return temp;
+            }
+            Node* succ = successor(root);
+            root->data = succ->data;
+            root->right = delNode(root->right, succ->data);
+
+        }
+
+    }
+
 };
 
 int main() {
-    vector<int> nodes = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
-
-    Tree tree;
-    tree.buildTree(nodes);
-    Node* root = tree.getRoot();
-
-    cout << "Level Order Traversal:\n";
-    tree.levelorder(tree.getRoot());
-
-    cout << "Sum : " << tree.sum(root) << endl;
-    cout << "Total Nodes : " << tree.countNode(root) << endl;
-    cout << "Height : " << tree.height(root) << endl;
-
-    cout << "Preorder: ";
-    tree.preorder(root);
-    cout << "\nInorder: ";
-    tree.inorder(root);
-    cout << "\nPostorder: ";
-    tree.postorder(root);
-    cout << endl;
+    Tree t;
+    t.insertBST(20);
+    t.insertBST(100);
+    t.insertBST(10);
+    t.inorder(t.getRoot());
+    
 
     return 0;
 }

@@ -39,6 +39,7 @@ public:
         idx = -1;
         root = buildTreeHelper(nodes);
     }
+    // preorder traversal 
     void preorder(Node* node){ 
         if(root = NULL) {
             return;
@@ -112,9 +113,7 @@ public:
         if(node == NULL) {
             return 0;
         }
-        int leftSum = sum(node->left);
-        int rightSum = sum(node->right);
-        return leftSum + rightSum + node->data;
+        return sum(node->left) + sum(node->right) + node->data;
     }
 };
 
