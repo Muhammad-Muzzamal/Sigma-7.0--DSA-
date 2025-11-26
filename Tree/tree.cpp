@@ -116,6 +116,7 @@ public:
     void insertBST(int val) {
         root = insertBST(root, val);
     }
+    
     Node* insertBST(Node* node, int val) {
         Node* newNode = new Node(val);
         if (node == NULL) {
@@ -165,6 +166,7 @@ public:
         }
 
     }
+    
 
 };
 
