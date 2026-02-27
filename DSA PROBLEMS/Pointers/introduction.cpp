@@ -1,5 +1,17 @@
 #include <iostream>
 using namespace std;
+
+// pass by value
+void change1(int x) {
+    x = 20;
+}
+// pass by reference
+void change2(int* x) { // using pointer
+    *x += 20;
+}
+void change3(int& x) { // using address operatoe alias
+    x += 20;
+}
 int main()
 {
     /**
@@ -61,8 +73,17 @@ int main()
 
     int* ptr4 = NULL;
     cout << ptr4 << endl;
-    cout << *ptr4 << endl; // segmentation fault
+    // cout << *ptr4 << endl; // segmentation fault
 
+    // pass by values and pass by reference
+    
+    int x = 20;
+    change1(x); // pass values
+    cout << "x = " << x << endl; // x = 20
+    change2(&x); // x = 20 + 20 = 40
+    cout << "x = " << x << endl; // x = 40
+    change3(x); // x = 40 + 20 = 60
+    cout << "x = " << x << endl; // x = 60
     
     
 
