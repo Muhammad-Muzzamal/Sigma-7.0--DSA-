@@ -74,6 +74,34 @@ class LL{
             this->head = newNode;
             size++;
         }
+        // delete node from front
+        void pop_front() {
+            if(this->head == NULL) {
+                cout << "List is empty\n";
+                return;
+            }
+            Node* temp = this->head;
+            this->head = this->head->getNext();
+            delete temp;
+            size--;
+            return;
+        }
+        // delete from tail
+        void pop_back() {
+            if(head == NULL) {
+                cout << "List is empty\n";
+                return;
+            }
+            Node* temp = head;
+            while(temp->getNext()->getNext() == NULL) {
+                temp = temp->getNext();
+            }
+            delete temp->getNext();
+            temp->setNext(NULL);
+            tail = temp;
+            size--;
+            return;
+        }
 
         // display linklist
         void display() {
@@ -98,6 +126,10 @@ int main() {
     l.push_back(12);
     l.push_back(13);
     l.push_front(11);
+    l.display();
+    l.pop_front();
+    l.display();
+    l.pop_back();
     l.display();
     cout << l.getSize() << endl;
     
