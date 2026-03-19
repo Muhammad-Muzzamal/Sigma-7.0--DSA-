@@ -93,7 +93,7 @@ class LL{
                 return;
             }
             Node* temp = head;
-            while(temp->getNext()->getNext() == NULL) {
+            while(temp->getNext()->getNext() != NULL) {
                 temp = temp->getNext();
             }
             delete temp->getNext();
@@ -102,7 +102,30 @@ class LL{
             size--;
             return;
         }
-
+        // check the list is empty or not
+        bool isEmpty() {
+            if(this->head == NULL) {
+                return true;
+            }
+            return false;
+        }
+        // Seach a key and return index
+        int linearSearch(int target) {
+            if(this->head == NULL) {
+                return -1;
+            }
+            Node* temp = this->getHead();
+            int i = 0;
+            while(temp != NULL) {
+                if(temp->getData() == target) {
+                    return i;
+                }
+                i++;
+                temp = temp->getNext();
+            }
+            return -1;
+        }
+        
         // display linklist
         void display() {
             if(head == NULL) {
@@ -123,15 +146,33 @@ class LL{
 
 int main() {
     LL l = LL();
-    l.push_back(12);
-    l.push_back(13);
-    l.push_front(11);
+    for(int i = 10; i <= 100; i += 10) {
+        l.push_back(i);
+    }
     l.display();
-    l.pop_front();
-    l.display();
-    l.pop_back();
-    l.display();
-    cout << l.getSize() << endl;
+    for(int i = 10; i <= 100; i += 10) {
+        cout << l.linearSearch(i) << endl;
+    }
+
+
+
+
+
+
+
+
+
+    // cout << l.isEmpty() << endl;
+    // l.push_back(12);
+    // l.push_back(13);
+    // l.push_front(11);
+    // l.display();
+    // l.pop_front();
+    // l.display();
+    // l.pop_back();
+    // l.display();
+    // cout << l.getSize() << endl;
+    // cout << l.isEmpty() << endl;
     
     return 0;
 }

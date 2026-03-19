@@ -57,7 +57,6 @@ public:
         }
         cout << endl;
     }
-
     void insertAtFront(int data) {
         if(head == NULL) {
             head = new Node(data);
@@ -104,7 +103,6 @@ public:
         delete temp->getNext();
         temp->setNext(NULL);
     }
-
     void deleteAt(int pos) {
         Node* temp = head;
         for(int i=0; i<pos-2; i++) {
@@ -128,17 +126,50 @@ public:
         }
         return 0;
     }
+    void reverseList() {
+        Node *prev = NULL;
+        Node *curr = this->getHead();
+        Node *next = NULL;
+
+        while(curr != NULL) {
+            next = curr->getNext();
+            curr->setNext(prev);
+            prev = curr;
+            curr = next;
+        }
+        this->head = prev;
+    }
+    bool detectCycle() {
+        Node* slow;
+        Node* fast;
+        while(fast != NULL && fast->getNext() != NULL) {
+            slow = slow->getNext();
+            fast = fast->getNext()->getNext();
+
+            if(slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 };
+
 
 int main() {
     cout << "Program Started\n";
-    List ll;
-    for(int i=0; i<20; i++) {
-        ll.insertAtEnd(i+1);
-    }
-    ll.traverse();
-    ll.deleteAt(3);
-    ll.traverse();
+    // List ll;
+    // ll.traverse();
+    // ll.reverseList();
+    // ll.traverse();
     
+    // cout << ll.detectCycle() << endl;
+    Node* n1 = new Node(10);
+    Node* n2 = new Node(11);
+    Node* n3 = new Node(12);
+    Node* n4 = new Node(13);
+    Node* n5 = new Node(14);
+    
+
     return 0;
 }
